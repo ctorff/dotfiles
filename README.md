@@ -12,4 +12,8 @@ generic dotfiles ...
 
     # vim
     wget https://raw.github.com/ctorff/dotfiles/master/.vimrc -O ~/.vimrc
-    
+
+might need this to workaround certificate problems
+
+    alias wget="wget --no-check-certificate"
+
