@@ -7,7 +7,7 @@ generic dotfiles ...
     wget http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc -O ~/.zsh/zshrc.grml
 
     # tmux and screen
-    wget https://raw.github.com/ctorff/dotfiles/master/.tmux.conf -O ~/.rmux.conf
+    wget https://raw.github.com/ctorff/dotfiles/master/.tmux.conf -O ~/.tmux.conf
     wget https://raw.github.com/ctorff/dotfiles/master/.screenrc -O ~/.screenrc
 
     # vim
