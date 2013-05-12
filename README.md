@@ -1,10 +1,15 @@
 generic dotfiles ...
 
+    # might need this to workaround certificate problems
+    alias wget="wget --no-check-certificate"
+
     # zsh
     wget https://raw.github.com/ctorff/dotfiles/master/.zshrc -O ~/.zshrc
-    # grml config, details see http://grml.org/zsh/
+    # OH MY ZSHELL!
+    git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    # zsh theme (prompt)
     mkdir -p ~/.zsh
-    wget http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc -O ~/.zsh/zshrc.grml
+    wget https://raw.github.com/ctorff/dotfiles/master/ct.zsh-theme -O ~/.zsh/ct.zsh-theme
 
     # tmux and screen
     wget https://raw.github.com/ctorff/dotfiles/master/.tmux.conf -O ~/.tmux.conf
@@ -17,7 +22,6 @@ generic dotfiles ...
     mkdir -p ~/.config/htop
     wget https://raw.github.com/ctorff/dotfiles/master/htoprc -O ~/.config/htop/htoprc
 
-might need this to workaround certificate problems
-
-    alias wget="wget --no-check-certificate"
+    # Xdefaults
+    wget https://raw.github.com/ctorff/dotfiles/master/.Xdefaults -O ~/.Xdefaults
 

@@ -1,13 +1,27 @@
-# --- Load additional configs if available ----------------------------
+# --- OH MY ZSH! ------------------------------------------------------
 
-test -f ${HOME}/.zsh/zshrc.grml && source ${HOME}/.zsh/zshrc.grml
+# oh-my-zsh based configuration.
+# https://github.com/robbyrussell/oh-my-zsh
+
+ZSH=$HOME/.oh-my-zsh
+
+# Theme name (without the .zsh-theme suffix)
+# Look in ~/.oh-my-zsh/themes/
+ZSH_THEME="../../.zsh/ct"
+
+DISABLE_AUTO_UPDATE="true"
+COMPLETION_WAITING_DOTS="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Plugins can be found in ~/.oh-my-zsh/plugins/* (Custom plugins may be
+# added to ~/.oh-my-zsh/custom/plugins/)
+plugins=(git archlinux battery colorize django python rsync systemd \
+    taskwarrior themes tmux tmuxinator vundle)
+
+source $ZSH/oh-my-zsh.sh
 
 # --- Common aliases --------------------------------------------------
 
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias ~="cd ~"
 alias md="mkdir -p"
 alias grep="grep --color=auto"
 alias ls="ls --color=auto"
@@ -36,43 +50,9 @@ export MANWIDTH=${MANWIDTH:-80}
 # wine ist als 64bit Umgebung nicht zu gebrauchen...
 export WINEARCH=win32
 
-# --- Colors ----------------------------------------------------------
+# --- Miscellaneous ---------------------------------------------------
 
-local red="%{"$'\e[1;31m'"%}"
-local RED="%{"$'\e[0;31m'"%}"
-local cyan="%{"$'\e[1;36m'"%}"
-local CYAN="%{"$'\e[0;36m'"%}"
-local blue="%{"$'\e[1;34m'"%}"
-local BLUE="%{"$'\e[0;34m'"%}"
-local green="%{"$'\e[1;32m'"%}"
-local GREEN="%{"$'\e[0;32m'"%}"
-local magenta="%{"$'\e[1;35m'"%}"
-local MAGENTA="%{"$'\e[0;35m'"%}"
-local yellow="%{"$'\e[1;33m'"%}"
-local YELLOW="%{"$'\e[0;33m'"%}"
-local gray="%{"$'\e[1;30m'"%}"
-local GRAY="%{"$'\e[0;37m'"%}"
-local white="%{"$'\e[0;37m'"%}"
-local WHITE="%{"$'\e[1;37m'"%}"
-local NOCOLOR="%{"$'\e[0m'"%}"
-local NEWLINE="%{"$'\e[80D'"%}"
-
-local HBAR=${altchar[q]:--}
-
-
-# --- Prompt & window title -------------------------------------------
-
-if [ ${UID} -eq 0 ]; then
-	export PS1="${red}%n@%M: ${YELLOW}%50<…<%~
-${GREEN}%T${white} %# "
-    PATH=${PATH}:/sbin:/usr/sbin
-else
-	export PS1="${green}%n@%M: ${YELLOW}%50<…<%~
-${GREEN}%T${white} %# "
-fi
-export PS2="%_> "
-
-# This function sets the window tile to user@host:/workingdir before 
+# This function sets the window tile to user@host:/workingdir before
 # each prompt.
 precmd () {
   [[ -t 1 ]] || return
@@ -84,24 +64,11 @@ precmd () {
   esac
 }
 
-
-# --- Miscellaneous ---------------------------------------------------
-
-# C-s does not stop the terminal anymore
-stty stop  '^-'
-stty start '^-'
-[[ $EMACS = t ]] && unsetopt zle # For zsh to work well within Emacs
-
 if [ ${UID} -eq 0 ]; then
     umask 077
 else
     umask 022
 fi
-
-# fix delete key issue
-bindkey    "^[[3~"          delete-char
-bindkey    "^[3;5~"         delete-char
-
 
 # --- Load local configs if available ---------------------------------
 

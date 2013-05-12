@@ -54,29 +54,34 @@ xterm*faceName:     terminus:weight=medium:pixelsize=16
 
 ! --- colors ------------------------------------------------------------------
 
-*cursorColor: #cdc092
+! modified Solarized color scheme for the X Window System
+! http://ethanschoonover.com/solarized
 
-!Theme Ten
-!*background: rgb:2a/2a/2a
-*background: rgb:1a/1a/1a
-*foreground: rgb:d6/d6/d6
-*color0:     rgb:00/00/00
-*color1:     rgb:98/56/5e
-*color2:     rgb:66/82/5d
-*color3:     rgb:96/91/76
-*color4:     rgb:4d/65/85
-*color5:     rgb:96/73/95
-*color6:     rgb:5f/7f/7b
-*color7:     rgb:d6/d6/d6
-*color8:     rgb:73/73/73
-*color9:     rgb:cf/a3/a9
-*color10:    rgb:ca/f7/bb
-*color11:    rgb:ff/f8/bc
-*color12:    rgb:83/a3/be
-*color13:    rgb:bb/a9/cf
-*color14:    rgb:96/cc/cc
-*color15:    rgb:ff/ff/ff
+*background: #002b36
+*foreground: #839496
+*fading: 40
+*fadeColor: #002b36
+*cursorColor: #93a1a1
+*pointerColorBackground: #586e75
+*pointerColorForeground: #93a1a1
 
+!*color0: #073642
+*color0: #202020
+*color1: #dc322f
+*color2: #859900
+*color3: #b58900
+*color4: #268bd2
+*color5: #d33682
+*color6: #2aa198
+*color7: #eee8d5
+*color9: #cb4b16
+*color8: #002b36
+*color10: #586e75
+*color11: #657b83
+*color12: #839496
+*color13: #6c71c4
+*color14: #93a1a1
+*color15: #fdf6e3
 
 ! --- xscreensaver -----------------------------------------------------------
 
@@ -107,6 +112,4 @@ xscreensaver.passwd.thermometer.background:  #000000
 xscreensaver.passwd.thermometer.width:       8
 datestamp format--see the strftime(3) manual page for details
 xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
-
-#include "~/.xrdb/look-zenburn.xrdb"
 

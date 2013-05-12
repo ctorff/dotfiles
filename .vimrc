@@ -40,14 +40,16 @@ Bundle 'garbas/vim-snipmate'
 "Bundle 'MarcWeber/UltiSnips'
 
 Bundle "project.tar.gz"
+"Bundle "jceb/vim-orgmode"
+"Bundle "hsitz/VimOrganizer"
 
 " Git diff icons on the side of the file lines
-Bundle 'airblade/vim-gitgutter'
+"Bundle 'airblade/vim-gitgutter'
 " Relative numbering of lines in normal mode
 Bundle 'myusuf3/numbers.vim'
 
 " Autocompletion
-Bundle 'AutoComplPop'
+"Bundle 'AutoComplPop'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
 Bundle 'klen/python-mode'
@@ -63,6 +65,7 @@ Bundle 'IndexedSearch'
 Bundle 'Wombat'
 " 256 color terminal colorscheme
 Bundle 'Zenburn'
+Bundle 'Solarized'
 
 " Python and PHP Debugger
 "Bundle 'fisadev/vim-debug.vim'
@@ -353,9 +356,15 @@ filetype plugin indent on
 " Set color scheme
 set t_Co=256
 "colorscheme desert256
-colorscheme zenburn
-let g:zenburn_high_Contrast = 1 " a darker background for bright environments
-let g:zenburn_alternate_Visual = 1  " get more contrast to the Visual selection
+
+"colorscheme zenburn
+"let g:zenburn_high_Contrast = 1 " a darker background for bright environments
+"let g:zenburn_alternate_Visual = 1  " get more contrast to the Visual selection
+
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
+
 syntax enable
 
 syntax on
