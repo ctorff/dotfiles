@@ -357,13 +357,9 @@ filetype plugin indent on
 set t_Co=256
 "colorscheme desert256
 
-"colorscheme zenburn
-"let g:zenburn_high_Contrast = 1 " a darker background for bright environments
-"let g:zenburn_alternate_Visual = 1  " get more contrast to the Visual selection
-
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme zenburn
+let g:zenburn_high_Contrast = 1 " a darker background for bright environments
+let g:zenburn_alternate_Visual = 1  " get more contrast to the Visual selection
 
 syntax enable
 

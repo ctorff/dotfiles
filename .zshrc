@@ -1,24 +1,30 @@
-# --- OH MY ZSH! ------------------------------------------------------
+# --- grml-zsh-config -------------------------------------------------
+# see http://grml.org/zsh/
 
-# oh-my-zsh based configuration.
-# https://github.com/robbyrussell/oh-my-zsh
+if [ -f ${HOME}/.zsh/zshrc.grml ]; then
 
-ZSH=$HOME/.oh-my-zsh
+    source ${HOME}/.zsh/zshrc.grml
 
-# Theme name (without the .zsh-theme suffix)
-# Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="../../.zsh/ct"
+    MAILCHECK=0
+    REPORTTIME=1
 
-DISABLE_AUTO_UPDATE="true"
-COMPLETION_WAITING_DOTS="true"
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Plugins can be found in ~/.oh-my-zsh/plugins/* (Custom plugins may be
-# added to ~/.oh-my-zsh/custom/plugins/)
-plugins=(git archlinux battery colorize django python rsync systemd \
-    taskwarrior themes tmux tmuxinator vundle)
-
-source $ZSH/oh-my-zsh.sh
+    # grml prompt config.  See prompt -h grml,
+    # http://grml.org/zsh/grmlzshrc.html,
+    # http://bewatermyfriend.org/p/2013/001/ and
+    # http://bewatermyfriend.org/p/2013/002/ for help.
+    zstyle ':prompt:grml:left:setup' items time rc change-root user at \
+             host path vcs newline history percent
+    zstyle ':prompt:grml:left:items:time' pre '%F{white}'
+    if [ ${UID} -eq 0 ]; then
+        zstyle ':prompt:grml:left:items:user' pre '%B%F{red}'
+    else
+        zstyle ':prompt:grml:left:items:user' pre '%B%F{green}'
+    fi
+    zstyle ':prompt:grml:left:items:at' pre '%B'
+    zstyle ':prompt:grml:left:items:host' pre '%B'
+    zstyle ':prompt:grml:left:items:path' pre '%b%F{yellow}'
+    zstyle ':prompt:grml:left:items:history' token '!%! '
+fi
 
 # --- Common aliases --------------------------------------------------
 
@@ -51,18 +57,6 @@ export MANWIDTH=${MANWIDTH:-80}
 export WINEARCH=win32
 
 # --- Miscellaneous ---------------------------------------------------
-
-# This function sets the window tile to user@host:/workingdir before
-# each prompt.
-precmd () {
-  [[ -t 1 ]] || return
-  case $TERM in
-      *xterm*|rxvt|urxvt|rxvt-unicode|cygwin)
-	  print -Pn "\e]2;%n@%m:%~\a"
-	  ;;
-      screen*) print -Pn "\e\"%m:%~\e\134"
-  esac
-}
 
 if [ ${UID} -eq 0 ]; then
     umask 077
