@@ -5,11 +5,9 @@ generic dotfiles ...
 
     # zsh
     wget https://raw.github.com/ctorff/dotfiles/master/.zshrc -O ~/.zshrc
-    # OH MY ZSHELL!
-    git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-    # zsh theme (prompt)
+    # grml config, details see http://grml.org/zsh/
     mkdir -p ~/.zsh
-    wget https://raw.github.com/ctorff/dotfiles/master/ct.zsh-theme -O ~/.zsh/ct.zsh-theme
+    wget http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc -O ~/.zsh/zshrc.grml
 
     # tmux and screen
     wget https://raw.github.com/ctorff/dotfiles/master/.tmux.conf -O ~/.tmux.conf

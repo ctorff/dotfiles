@@ -367,7 +367,8 @@ syntax on
 syntax sync fromstart
 
 " remove whitespaces at end of line
-autocmd! BufWritePre * :%s/\s\+$//e
+"autocmd! BufWritePre * :%s/\s\+$//e
+autocmd FileType c,cpp,php,py,sh autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 
 " --- Mappings ----------------------------------------------------------------
