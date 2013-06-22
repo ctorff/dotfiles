@@ -39,9 +39,9 @@ Bundle 'honza/vim-snippets'
 Bundle 'garbas/vim-snipmate'
 "Bundle 'MarcWeber/UltiSnips'
 
-Bundle "project.tar.gz"
-"Bundle "jceb/vim-orgmode"
-"Bundle "hsitz/VimOrganizer"
+Bundle 'project.tar.gz'
+"Bundle 'jceb/vim-orgmode'
+"Bundle 'hsitz/VimOrganizer'
 
 " Git diff icons on the side of the file lines
 "Bundle 'airblade/vim-gitgutter'
@@ -54,7 +54,7 @@ Bundle 'myusuf3/numbers.vim'
 " operators, highlighting, run and ipdb breakpoints)
 Bundle 'klen/python-mode'
 " Python code checker
-Bundle 'pyflakes.vim'
+"Bundle 'pyflakes.vim'
 " Class/module browser
 Bundle 'majutsushi/tagbar'
 
@@ -82,11 +82,11 @@ Bundle 'Solarized'
 " Tab list panel
 "Bundle 'kien/tabman.vim'
 
-if hostname == "moss"
-    Bundle "vim-scripts/Csound-compiler-plugin"
-    Bundle "vim-scripts/LaTeX-Suite-aka-Vim-LaTeX"
+if hostname == 'moss'
+    Bundle 'vim-scripts/Csound-compiler-plugin'
+    Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
     " support for reStructured Text
-    Bundle "vim-scripts/VST"
+    Bundle 'vim-scripts/VST'
 endif
 
 " Installing plugins the first time
@@ -433,5 +433,4 @@ au BufNewFile *.orc                       0r $HOME/.vim/templates/template.orc
 au BufRead *.sh nmap [15^ :! "%:p"<CR>
 " execute current line of script
 au BufRead *.sh nmap <F5> :execute "!".getline(".")<CR>
-
 
