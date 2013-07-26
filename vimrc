@@ -40,7 +40,7 @@ Bundle 'garbas/vim-snipmate'
 "Bundle 'MarcWeber/UltiSnips'
 
 Bundle 'project.tar.gz'
-"Bundle 'jceb/vim-orgmode'
+Bundle 'jceb/vim-orgmode'
 "Bundle 'hsitz/VimOrganizer'
 
 " Git diff icons on the side of the file lines
@@ -74,7 +74,7 @@ Bundle 'Solarized'
 " Code commenter
 "Bundle 'scrooloose/nerdcommenter'
 " Code and files fuzzy finder
-"Bundle 'kien/ctrlp.vim'
+Bundle 'kien/ctrlp.vim'
 " Zen coding
 "Bundle 'mattn/zencoding-vim'
 " Git integration
@@ -134,6 +134,21 @@ set grepprg=grep\ -nH\ $*   " program used for the ":grep" command
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"  " automatic indentation as you type.
 
+
+" --- Toggle tabs ans spaces ------------------------------------ Functions ---
+
+function TabToggle()
+  if &expandtab
+    set shiftwidth=8
+    set softtabstop=0
+    set noexpandtab
+  else
+    set shiftwidth=4
+    set softtabstop=4
+    set expandtab
+  endif
+endfunction
+nmap <F9> mz:execute TabToggle()<CR>'z
 
 " --- 1 important ------------------------------------------------- Options ---
 
@@ -376,6 +391,8 @@ autocmd FileType c,cpp,php,py,sh autocmd BufWritePre <buffer> :%s/\s\+$//e
 " With a map leader it's possible to do extra key combinations
 let mapleader = ","
 let g:mapleader = ","
+let maplocalleader = ","
+let g:maplocalleader = ","
 
 " buffers
 map <leader>bn :bnext<cr>

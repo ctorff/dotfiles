@@ -30,7 +30,7 @@ fi
 
 alias md="mkdir -p"
 alias grep="grep --color=auto"
-alias ls="ls --color=auto"
+alias ls="ls --color=auto --group-directories-first"
 alias ll="ls -lh"
 alias lS="ls -lhSr"             # sort by size
 alias lt="ls -lutr"             # sort by time
