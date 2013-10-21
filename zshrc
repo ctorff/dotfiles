@@ -40,6 +40,7 @@ alias df="df -H"
 alias h="history"
 alias G=" | grep "
 alias L=" | less "
+alias bc="bc -l"
 alias README="less README"
 alias rmkey="ssh-keygen -R"
 

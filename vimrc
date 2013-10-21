@@ -32,6 +32,8 @@ call vundle#rc()
 " let Vundle manage Vundle. required!
 Bundle 'gmarik/vundle'
 
+Bundle 'taglist.vim'
+
 " Snippets manager (SnipMate), dependencies, and snippets repo
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
@@ -187,7 +189,7 @@ set numberwidth=4       " number of columns to use for the line number
 " --- 5 syntax, highlighting and spelling ------------------------- Options ---
 
 set background=dark     " dark or light; the background color brightness
-set synmaxcol=1000      " maximum column to look for syntax items
+set synmaxcol=4096      " maximum column to look for syntax items
 set hlsearch            " highlight all matches for the last used search
                         " pattern
 set nocursorcolumn      " highlight the screen column of the cursor
@@ -249,7 +251,7 @@ set showmode            " display the current mode in the status line
 set ruler               " show cursor position below each window
 set more                " pause listings when the screen is full
 set noerrorbells        " ring the bell for error messages
-"set visualbell          " use a visual bell instead of beeping
+set visualbell          " use a visual bell instead of beeping
 set helplang=de         " list of preferred languages for finding help
 
 
@@ -310,8 +312,8 @@ set foldnestmax=20      " maximum fold depth for when 'foldmethod is indent or
 
 set modeline            " enable using settings from modelines when reading a
                         " file
-"set fileformat=unix     " end-of-line format: 'dos', 'unix' or 'mac'
-set fileformats=unix,dos    " list of file formats to look for when editing a
+set fileformat=unix     " end-of-line format: 'dos', 'unix' or 'mac'
+"set fileformats=unix,dos    " list of file formats to look for when editing a
                         " file
 set nobackup            " do not keep a backup file
 "set backupdir=~/.vim/backup//   " backup dir
