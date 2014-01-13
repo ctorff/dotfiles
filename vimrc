@@ -52,11 +52,6 @@ Bundle 'myusuf3/numbers.vim'
 
 " Autocompletion
 "Bundle 'AutoComplPop'
-" Python mode (indentation, doc, refactor, lints, code checking, motion and
-" operators, highlighting, run and ipdb breakpoints)
-Bundle 'klen/python-mode'
-" Python code checker
-"Bundle 'pyflakes.vim'
 " Class/module browser
 Bundle 'majutsushi/tagbar'
 
@@ -85,6 +80,12 @@ Bundle 'kien/ctrlp.vim'
 "Bundle 'kien/tabman.vim'
 
 if hostname == 'moss'
+    " Python mode (indentation, doc, refactor, lints, code checking, motion and
+    " operators, highlighting, run and ipdb breakpoints)
+    Bundle 'klen/python-mode'
+    " Python code checker
+    "Bundle 'pyflakes.vim'
+
     Bundle 'vim-scripts/Csound-compiler-plugin'
     Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
     " support for reStructured Text

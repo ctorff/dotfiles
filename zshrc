@@ -72,3 +72,5 @@ test -f ${HOME}/.zsh/zshrc.${HOST} && source ${HOME}/.zsh/zshrc.${HOST}
 
 test -f ${HOME}/.aliases && source ${HOME}/.aliases
 
+test -f ${HOME}/.zsh/functions && source ${HOME}/.zsh/functions
+
