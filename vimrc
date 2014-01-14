@@ -47,8 +47,6 @@ Bundle 'jceb/vim-orgmode'
 
 " Git diff icons on the side of the file lines
 "Bundle 'airblade/vim-gitgutter'
-" Relative numbering of lines in normal mode
-Bundle 'myusuf3/numbers.vim'
 
 " Autocompletion
 "Bundle 'AutoComplPop'
@@ -90,6 +88,9 @@ if hostname == 'moss'
     Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
     " support for reStructured Text
     Bundle 'vim-scripts/VST'
+
+    " Relative numbering of lines in normal mode
+    Bundle 'myusuf3/numbers.vim'
 endif
 
 " Installing plugins the first time
