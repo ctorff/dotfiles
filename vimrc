@@ -37,9 +37,6 @@ Bundle 'taglist.vim'
 " Snippets manager (SnipMate), dependencies, and snippets repo
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets'
-Bundle 'garbas/vim-snipmate'
-"Bundle 'MarcWeber/UltiSnips'
 
 Bundle 'project.tar.gz'
 Bundle 'jceb/vim-orgmode'
@@ -50,8 +47,6 @@ Bundle 'jceb/vim-orgmode'
 
 " Autocompletion
 "Bundle 'AutoComplPop'
-" Class/module browser
-Bundle 'majutsushi/tagbar'
 
 " Search results counter
 Bundle 'IndexedSearch'
@@ -83,6 +78,13 @@ if hostname == 'moss'
     Bundle 'klen/python-mode'
     " Python code checker
     "Bundle 'pyflakes.vim'
+
+    " Class/module browser
+    Bundle 'majutsushi/tagbar'
+
+    Bundle 'honza/vim-snippets'
+    Bundle 'garbas/vim-snipmate'
+    "Bundle 'MarcWeber/UltiSnips'
 
     Bundle 'vim-scripts/Csound-compiler-plugin'
     Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
