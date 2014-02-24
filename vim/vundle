@@ -1,0 +1,96 @@
+" Vundle setup 
+" copied from here: https://github.com/fisadev/fisa-vim-config
+
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
+
+" required for vundle
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Bundles (run :BundleInstall or :BundleUpdate after changes)
+
+" let Vundle manage Vundle. required!
+Bundle 'gmarik/vundle'
+
+Bundle 'taglist.vim'
+
+" Snippets manager (SnipMate), dependencies, and snippets repo
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+
+Bundle 'project.tar.gz'
+Bundle 'jceb/vim-orgmode'
+"Bundle 'hsitz/VimOrganizer'
+
+" Git diff icons on the side of the file lines
+"Bundle 'airblade/vim-gitgutter'
+
+" Autocompletion
+"Bundle 'AutoComplPop'
+
+" Search results counter
+Bundle 'IndexedSearch'
+
+" Gvim colorscheme
+Bundle 'Wombat'
+" 256 color terminal colorscheme
+Bundle 'Zenburn'
+Bundle 'Solarized'
+
+Bundle 'Puppet-Syntax-Highlighting'
+
+" Python and PHP Debugger
+"Bundle 'fisadev/vim-debug.vim'
+" Better file browser
+"Bundle 'scrooloose/nerdtree'
+" Code commenter
+"Bundle 'scrooloose/nerdcommenter'
+" Code and files fuzzy finder
+Bundle 'kien/ctrlp.vim'
+" Zen coding
+"Bundle 'mattn/zencoding-vim'
+" Git integration
+"Bundle 'motemen/git-vim'
+" Tab list panel
+"Bundle 'kien/tabman.vim'
+
+if hostname == 'moss'
+    " Python mode (indentation, doc, refactor, lints, code checking, motion and
+    " operators, highlighting, run and ipdb breakpoints)
+    Bundle 'klen/python-mode'
+    " Python code checker
+    "Bundle 'pyflakes.vim'
+
+    " Class/module browser
+    Bundle 'majutsushi/tagbar'
+
+    Bundle 'honza/vim-snippets'
+    Bundle 'garbas/vim-snipmate'
+    "Bundle 'MarcWeber/UltiSnips'
+
+    Bundle 'vim-scripts/Csound-compiler-plugin'
+    Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
+    " support for reStructured Text
+    Bundle 'vim-scripts/VST'
+
+    " Relative numbering of lines in normal mode
+    Bundle 'myusuf3/numbers.vim'
+endif
+
+" Installing plugins the first time
+if iCanHazVundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :BundleInstall
+endif
+

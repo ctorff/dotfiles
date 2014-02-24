@@ -4,104 +4,10 @@ autocmd!
 " get hostname for host-dependent configuration
 let hostname = substitute(system('hostname'), '\n', '', '')
 
-
-" --- Vundle setup ------------------------------------------------ Plugins ---
-" copied from here: https://github.com/fisadev/fisa-vim-config
-
 set nocompatible
 
-" Setting up Vundle - the vim plugin bundler
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-    echo "Installing Vundle..."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let iCanHazVundle=0
-endif
-
-" required for vundle
-filetype off
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" Bundles (run :BundleInstall or :BundleUpdate after changes)
-
-" let Vundle manage Vundle. required!
-Bundle 'gmarik/vundle'
-
-Bundle 'taglist.vim'
-
-" Snippets manager (SnipMate), dependencies, and snippets repo
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-
-Bundle 'project.tar.gz'
-Bundle 'jceb/vim-orgmode'
-"Bundle 'hsitz/VimOrganizer'
-
-" Git diff icons on the side of the file lines
-"Bundle 'airblade/vim-gitgutter'
-
-" Autocompletion
-"Bundle 'AutoComplPop'
-
-" Search results counter
-Bundle 'IndexedSearch'
-
-" Gvim colorscheme
-Bundle 'Wombat'
-" 256 color terminal colorscheme
-Bundle 'Zenburn'
-Bundle 'Solarized'
-
-" Python and PHP Debugger
-"Bundle 'fisadev/vim-debug.vim'
-" Better file browser
-"Bundle 'scrooloose/nerdtree'
-" Code commenter
-"Bundle 'scrooloose/nerdcommenter'
-" Code and files fuzzy finder
-Bundle 'kien/ctrlp.vim'
-" Zen coding
-"Bundle 'mattn/zencoding-vim'
-" Git integration
-"Bundle 'motemen/git-vim'
-" Tab list panel
-"Bundle 'kien/tabman.vim'
-
-if hostname == 'moss'
-    " Python mode (indentation, doc, refactor, lints, code checking, motion and
-    " operators, highlighting, run and ipdb breakpoints)
-    Bundle 'klen/python-mode'
-    " Python code checker
-    "Bundle 'pyflakes.vim'
-
-    " Class/module browser
-    Bundle 'majutsushi/tagbar'
-
-    Bundle 'honza/vim-snippets'
-    Bundle 'garbas/vim-snipmate'
-    "Bundle 'MarcWeber/UltiSnips'
-
-    Bundle 'vim-scripts/Csound-compiler-plugin'
-    Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
-    " support for reStructured Text
-    Bundle 'vim-scripts/VST'
-
-    " Relative numbering of lines in normal mode
-    Bundle 'myusuf3/numbers.vim'
-endif
-
-" Installing plugins the first time
-if iCanHazVundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :BundleInstall
-endif
-
+" vundle setup and plug-ins
+source ~/.vim/vundle
 
 " --- snipMate ---------------------------------------------------- Plugins ---
 
@@ -292,20 +198,7 @@ set preserveindent      " Preserve kind of whitespace when changing indent
 
 " --- 16 folding -------------------------------------------------- Options ---
 
-set foldenable          " set to display all folds open
-set foldlevel=5         " folds with a level higher than this number will be
-                        " closed
-set foldlevelstart=-1   " value for 'foldlevel' when starting to edit a file
-set foldcolumn=0        " width of the column used to indicate folds
-set foldtext=foldtext() " expression used to display the text of a closed fold
-set foldclose=all       " set to 'all' to close a fold when the cursor leaves
-                        " it
-set foldopen=all        " specifies for which commands a fold will be opened
-set foldmethod=syntax   " folding type: manual, indent, expr, marker or syntax
-set foldmarker={{{,}}}  " markers used when 'foldmethod' is marker
-set foldexpr=0          " expression used when 'foldmethod' is expr
-set foldnestmax=20      " maximum fold depth for when 'foldmethod is indent or
-                        " syntax
+source ~/.vim/folding
 
 
 " --- 17 diff mode ------------------------------------------------ Options ---
@@ -417,14 +310,6 @@ map <C-j> <C-W>j<C-w>_
 map <C-k> <C-W>k<C-w>_
 map <C-h> <C-w>h<C-w>_
 map <C-l> <C-w>l<C-w>_
-
-
-" --- Folding -----------------------------------------------------------------
-
-" save and reload folds
-" noch nötig, wenn viewoptions und viewdir gesetzt?
-"autocmd BufWinLeave * if expand("%") != "" | mkview | endif
-"autocmd BufWinEnter * if expand("%") != "" | loadview | endif
 
 
 " --- mutt ------------------------------------------------------- Filetype ---
