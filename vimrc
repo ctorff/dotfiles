@@ -204,12 +204,12 @@ set viewdir=~/.vim/view " directory where to store files with :mkview
 
 " --- Main Settings -----------------------------------------------------------
 
-"filetype on
-"filetype plugin indent on
+filetype on
+filetype plugin indent on
 
-"syntax enable
-"syntax on
-"syntax sync fromstart
+syntax enable
+syntax on
+syntax sync fromstart
 
 " remove whitespaces at end of line
 "autocmd! BufWritePre * :%s/\s\+$//e
