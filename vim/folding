@@ -1,3 +1,5 @@
+" vim: set filetype=vim:
+
 " https://coderwall.com/p/usd_cw
 
 if has("folding")

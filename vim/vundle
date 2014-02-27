@@ -1,5 +1,11 @@
+" vim: set filetype=vim:
+
 " Vundle setup 
 " copied from here: https://github.com/fisadev/fisa-vim-config
+" run :BundleInstall or :BundleUpdate after changes
+
+set nocompatible
+filetype off
 
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
@@ -11,26 +17,62 @@ if !filereadable(vundle_readme)
     let iCanHazVundle=0
 endif
 
-" required for vundle
-filetype off
-
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Bundles (run :BundleInstall or :BundleUpdate after changes)
-
-" let Vundle manage Vundle. required!
 Bundle 'gmarik/vundle'
 
-Bundle 'taglist.vim'
+Bundle 'tpope/vim-sensible'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
+
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'nanotech/jellybeans.vim'
+color jellybeans
+
+" Syntastic
+Bundle 'scrooloose/syntastic'
+let g:syntastic_mode_map = { 'mode': 'passive' }
+"let g:syntastic_ruby_exec = '~/.rvm/rubies/ruby-2.0.0-p0/bin/ruby'
+
+" NERDTree
+Bundle 'scrooloose/nerdtree'
+nmap <leader>n :NERDTreeToggle<CR>
+let NERDTreeHighlightCursorline=1
+let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg']
+
+" Fuzzy search files and buffers
+Bundle 'kien/ctrlp.vim'
+"nnoremap <silent> t :CtrlP<cr>
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_by_filename = 1
+let g:ctrlp_max_files = 600
+let g:ctrlp_max_depth = 5
 
 " Snippets manager (SnipMate), dependencies, and snippets repo
+"Bundle 'honza/vim-snippets'
+Bundle 'garbas/vim-snipmate'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
+"Bundle 'MarcWeber/UltiSnips'
 
-Bundle 'project.tar.gz'
-Bundle 'jceb/vim-orgmode'
-"Bundle 'hsitz/VimOrganizer'
+"Bundle 'rking/ag.vim'
+"Bundle 'kana/vim-textobj-user'
+"Bundle 'Lokaltog/vim-easymotion'
+
+"Bundle 'taglist.vim'
+"let Tlist_Auto_Open = 1
+"let Tlist_Use_Right_Window = 1
+""let Tlist_Compact_Format = 1
+"let Tlist_Exit_OnlaWindow = 1
+"let Tlist_File_Fold_Auto_Close = 1
+""let Tlist_Show_One_File = 1
+"let Tlist_GainFocus_On_ToggleOpen = 1
+"" default ist 4, zu niedrig soll probleme geben...
+"let updatetime = 1
+""au VimEnter * Tlist
+"nnoremap <silent> <F8> :TlistToggle<CR>
 
 " Git diff icons on the side of the file lines
 "Bundle 'airblade/vim-gitgutter'
@@ -39,24 +81,14 @@ Bundle 'jceb/vim-orgmode'
 "Bundle 'AutoComplPop'
 
 " Search results counter
-Bundle 'IndexedSearch'
+"Bundle 'IndexedSearch'
 
-" Gvim colorscheme
-Bundle 'Wombat'
-" 256 color terminal colorscheme
-Bundle 'Zenburn'
-Bundle 'Solarized'
-
-Bundle 'Puppet-Syntax-Highlighting'
+"Bundle  'puppetlabs/puppet', {'rtp': 'puppet/ext/vim'}
 
 " Python and PHP Debugger
 "Bundle 'fisadev/vim-debug.vim'
-" Better file browser
-"Bundle 'scrooloose/nerdtree'
 " Code commenter
 "Bundle 'scrooloose/nerdcommenter'
-" Code and files fuzzy finder
-Bundle 'kien/ctrlp.vim'
 " Zen coding
 "Bundle 'mattn/zencoding-vim'
 " Git integration
@@ -64,28 +96,39 @@ Bundle 'kien/ctrlp.vim'
 " Tab list panel
 "Bundle 'kien/tabman.vim'
 
-if hostname == 'moss'
-    " Python mode (indentation, doc, refactor, lints, code checking, motion and
-    " operators, highlighting, run and ipdb breakpoints)
-    Bundle 'klen/python-mode'
-    " Python code checker
-    "Bundle 'pyflakes.vim'
+"Bundle 'project.tar.gz'
+"if filereadable("vimproject")
+"    :let g:proj_flags="imstvcg"
+"endif
 
-    " Class/module browser
-    Bundle 'majutsushi/tagbar'
+" Python mode (indentation, doc, refactor, lints, code checking, motion and
+" operators, highlighting, run and ipdb breakpoints)
+"Bundle 'klen/python-mode'
+" Python code checker
+"Bundle 'pyflakes.vim'
 
-    Bundle 'honza/vim-snippets'
-    Bundle 'garbas/vim-snipmate'
-    "Bundle 'MarcWeber/UltiSnips'
+" Class/module browser
+"Bundle 'majutsushi/tagbar'
 
-    Bundle 'vim-scripts/Csound-compiler-plugin'
-    Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
-    " support for reStructured Text
-    Bundle 'vim-scripts/VST'
+"Bundle 'vim-scripts/Csound-compiler-plugin'
 
-    " Relative numbering of lines in normal mode
-    Bundle 'myusuf3/numbers.vim'
-endif
+"Bundle 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
+"set shellslash      " required on win32
+"" IMPORTANT: grep will sometimes skip displaying the file name if you
+"" search in a singe file. This will confuse latex-suite. Set your grep
+"" program to alway generate a file-name.
+"set grepprg=grep\ -nH\ $*   " program used for the ":grep" command
+"set grepprg=grep\ -nH\ $*
+"let g:tex_flavor = "latex"  " automatic indentation as you type.
+
+" support for reStructured Text
+"Bundle 'vim-scripts/VST'
+
+" Relative numbering of lines in normal mode
+"Bundle 'myusuf3/numbers.vim'
+
+"Bundle 'jceb/vim-orgmode'
+"Bundle 'hsitz/VimOrganizer'
 
 " Installing plugins the first time
 if iCanHazVundle == 0

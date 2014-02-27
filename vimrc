@@ -1,66 +1,11 @@
 " clear all existing autocommands
 autocmd!
 
-" get hostname for host-dependent configuration
-let hostname = substitute(system('hostname'), '\n', '', '')
-
-set nocompatible
-
 " vundle setup and plug-ins
-source ~/.vim/vundle
+if filereadable(glob("~/.vim/vundle")) 
+    source ~/.vim/vundle
+endif
 
-" --- snipMate ---------------------------------------------------- Plugins ---
-
-set nopaste         " important!!
-
-
-" --- Project ----------------------------------------------------- Plugins ---
-
-"if filereadable("vimproject")
-    :let g:proj_flags="imstvcg"
-"endif
-
-
-" --- taglist ----------------------------------------------------- Plugins ---
-
-let Tlist_Auto_Open = 1
-let Tlist_Use_Right_Window = 1
-"let Tlist_Compact_Format = 1
-let Tlist_Exit_OnlaWindow = 1
-let Tlist_File_Fold_Auto_Close = 1
-"let Tlist_Show_One_File = 1
-let Tlist_GainFocus_On_ToggleOpen = 1
-" default ist 4, zu niedrig soll probleme geben...
-let updatetime = 1
-"au VimEnter * Tlist
-nnoremap <silent> <F8> :TlistToggle<CR>
-
-
-" --- LaTeX suite ------------------------------------------------- Plugins ---
-
-set shellslash      " required on win32
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse latex-suite. Set your grep
-" program to alway generate a file-name.
-set grepprg=grep\ -nH\ $*   " program used for the ":grep" command
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"  " automatic indentation as you type.
-
-
-" --- Toggle tabs ans spaces ------------------------------------ Functions ---
-
-function TabToggle()
-  if &expandtab
-    set shiftwidth=8
-    set softtabstop=0
-    set noexpandtab
-  else
-    set shiftwidth=4
-    set softtabstop=4
-    set expandtab
-  endif
-endfunction
-nmap <F9> mz:execute TabToggle()<CR>'z
 
 " --- 1 important ------------------------------------------------- Options ---
 
@@ -98,7 +43,7 @@ set numberwidth=4       " number of columns to use for the line number
 
 " --- 5 syntax, highlighting and spelling ------------------------- Options ---
 
-set background=dark     " dark or light; the background color brightness
+"set background=dark     " dark or light; the background color brightness
 set synmaxcol=4096      " maximum column to look for syntax items
 set hlsearch            " highlight all matches for the last used search
                         " pattern
@@ -143,11 +88,6 @@ set ttyfast             " terminal connection is fast
 
 
 " --- 9 using the mouse ------------------------------------------- Options ---
-
-" bei auto (a) funktioniert Paste auf remote Kisten nicht mehr
-if hostname == "moss"
-    set mouse=a
-endif
 
 
 " --- 10 GUI ------------------------------------------------------ Options ---
@@ -265,20 +205,11 @@ set viewdir=~/.vim/view " directory where to store files with :mkview
 " --- Main Settings -----------------------------------------------------------
 
 "filetype on
-filetype plugin indent on
+"filetype plugin indent on
 
-" Set color scheme
-set t_Co=256
-"colorscheme desert256
-
-colorscheme zenburn
-let g:zenburn_high_Contrast = 1 " a darker background for bright environments
-let g:zenburn_alternate_Visual = 1  " get more contrast to the Visual selection
-
-syntax enable
-
-syntax on
-syntax sync fromstart
+"syntax enable
+"syntax on
+"syntax sync fromstart
 
 " remove whitespaces at end of line
 "autocmd! BufWritePre * :%s/\s\+$//e
@@ -317,28 +248,32 @@ map <C-l> <C-w>l<C-w>_
 au BufRead /tmp/mutt-* set textwidth=72
 
 
-" --- chuck ------------------------------------------------------ Filetype ---
-
-au BufNewFile,BufRead *.ck          setf ck
-
-cnoreabbrev C+ ! chuck + %
-cnoreabbrev C- ! chuck - %
-cnoreabbrev C= ! chuck = %
-cnoreabbrev CR ! chuck --remove.all
-
-
-" --- csound support --------------------------------------------- Filetype ---
-
-au BufNewFile,BufRead *.orc,*.sco,*.csd   so $HOME/.vim/syntax/csound.vim
-au BufNewFile,BufRead *.csd               so $HOME/.vim/macros/csound_macros.vim
-au BufNewFile *.csd                       0r $HOME/.vim/templates/template.csd
-au BufNewFile *.orc                       0r $HOME/.vim/templates/template.orc
-
-
 " --- Shell scripts ---------------------------------------------- Filetype ---
 
 " execute current script
 au BufRead *.sh nmap [15^ :! "%:p"<CR>
 " execute current line of script
 au BufRead *.sh nmap <F5> :execute "!".getline(".")<CR>
+
+
+" --- Toggle tabs ans spaces ------------------------------------ Functions ---
+
+function TabToggle()
+  if &expandtab
+    set shiftwidth=8
+    set softtabstop=0
+    set noexpandtab
+  else
+    set shiftwidth=4
+    set softtabstop=4
+    set expandtab
+  endif
+endfunction
+nmap <F9> mz:execute TabToggle()<CR>'z
+
+
+" load local config
+if filereadable(glob("~/.vim/vimrc.local")) 
+    source ~/.vim/vimrc.local
+endif
 
