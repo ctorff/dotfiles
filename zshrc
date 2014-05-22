@@ -74,3 +74,7 @@ test -f ${HOME}/.aliases && source ${HOME}/.aliases
 
 test -f ${HOME}/.zsh/functions && source ${HOME}/.zsh/functions
 
+test -f ${HOME}/.fzf.zsh && source ${HOME}/.fzf.zsh
+
+test -f ${HOME}/.zsh/fzfrc && source ${HOME}/.zsh/fzfrc
+

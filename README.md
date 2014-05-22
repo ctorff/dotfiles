@@ -15,6 +15,8 @@ Quick setup:
 
     # vim
     wget https://raw.github.com/ctorff/dotfiles/master/vimrc -O ~/.vimrc
+    wget https://raw.github.com/ctorff/dotfiles/master/vim/vundle -O ~/.vim/vundle
+    wget https://raw.github.com/ctorff/dotfiles/master/vim/folding -O ~/.vim/folding
 
     # htop
     mkdir -p ~/.config/htop

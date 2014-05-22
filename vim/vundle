@@ -30,32 +30,21 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'nanotech/jellybeans.vim'
 color jellybeans
 
-" Syntastic
 Bundle 'scrooloose/syntastic'
-let g:syntastic_mode_map = { 'mode': 'passive' }
-"let g:syntastic_ruby_exec = '~/.rvm/rubies/ruby-2.0.0-p0/bin/ruby'
-
-" NERDTree
 Bundle 'scrooloose/nerdtree'
-nmap <leader>n :NERDTreeToggle<CR>
-let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg']
 
 " Fuzzy search files and buffers
 Bundle 'kien/ctrlp.vim'
-"nnoremap <silent> t :CtrlP<cr>
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_working_path_mode = 2
-let g:ctrlp_by_filename = 1
-let g:ctrlp_max_files = 600
-let g:ctrlp_max_depth = 5
 
 " Snippets manager (SnipMate), dependencies, and snippets repo
-"Bundle 'honza/vim-snippets'
-Bundle 'garbas/vim-snipmate'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
 "Bundle 'MarcWeber/UltiSnips'
+
+Bundle 'jceb/vim-orgmode'
+Bundle 'tpope/vim-speeddating'
 
 "Bundle 'rking/ag.vim'
 "Bundle 'kana/vim-textobj-user'
@@ -126,9 +115,6 @@ Bundle 'tomtom/tlib_vim'
 
 " Relative numbering of lines in normal mode
 "Bundle 'myusuf3/numbers.vim'
-
-"Bundle 'jceb/vim-orgmode'
-"Bundle 'hsitz/VimOrganizer'
 
 " Installing plugins the first time
 if iCanHazVundle == 0
