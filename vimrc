@@ -174,6 +174,8 @@ syntax sync fromstart
 "autocmd! BufWritePre * :%s/\s\+$//e
 autocmd FileType c,cpp,php,py,sh autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+color jellybeans
+
 " --- Mappings ----------------------------------------------------------------
 
 " With a map leader it's possible to do extra key combinations
