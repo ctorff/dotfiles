@@ -113,7 +113,9 @@ set cindent             " enable specific indenting for C code
 set preserveindent      " Preserve kind of whitespace when changing indent
 
 " --- 16 folding
-source ~/.vim/folding
+if filereadable(glob("~/.vim/folding")) 
+    source ~/.vim/folding
+endif
 
 " --- 17 diff mode
 " --- 18 mapping

@@ -5,9 +5,6 @@ Quick setup:
 
     # zsh
     wget https://raw.github.com/ctorff/dotfiles/master/zshrc -O ~/.zshrc
-    # grml config, details see http://grml.org/zsh/
-    mkdir -p ~/.zsh
-    wget http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc -O ~/.zsh/zshrc.grml
 
     # tmux and screen
     wget https://raw.github.com/ctorff/dotfiles/master/tmux.conf -O ~/.tmux.conf
@@ -15,8 +12,8 @@ Quick setup:
 
     # vim
     wget https://raw.github.com/ctorff/dotfiles/master/vimrc -O ~/.vimrc
+    mkdir -p ~/.vim
     wget https://raw.github.com/ctorff/dotfiles/master/vim/vundle -O ~/.vim/vundle
-    wget https://raw.github.com/ctorff/dotfiles/master/vim/folding -O ~/.vim/folding
 
     # htop
     mkdir -p ~/.config/htop
