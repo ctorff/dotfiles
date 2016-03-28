@@ -1,30 +1,56 @@
-# --- grml-zsh-config -------------------------------------------------
-# see http://grml.org/zsh/
+HISTFILE=~/.zsh_history
+HISTSIZE=5000
+SAVEHIST=10000
+setopt appendhistory autocd beep extendedglob nomatch notify
+bindkey -v
 
-if [ -f ${HOME}/.zsh/zshrc.grml ]; then
+zstyle :compinstall filename '/home/ct/.zshrc'
 
-    source ${HOME}/.zsh/zshrc.grml
+autoload -Uz compinit
+compinit
 
-    MAILCHECK=0
-    REPORTTIME=1
+# History search with arrow keys
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
 
-    # grml prompt config.  See prompt -h grml,
-    # http://grml.org/zsh/grmlzshrc.html,
-    # http://bewatermyfriend.org/p/2013/001/ and
-    # http://bewatermyfriend.org/p/2013/002/ for help.
-    zstyle ':prompt:grml:left:setup' items time rc change-root user at \
-             host path vcs newline history percent
-    zstyle ':prompt:grml:left:items:time' pre '%F{white}'
-    if [ ${UID} -eq 0 ]; then
-        zstyle ':prompt:grml:left:items:user' pre '%B%F{red}'
-    else
-        zstyle ':prompt:grml:left:items:user' pre '%B%F{green}'
-    fi
-    zstyle ':prompt:grml:left:items:at' pre '%B'
-    zstyle ':prompt:grml:left:items:host' pre '%B'
-    zstyle ':prompt:grml:left:items:path' pre '%b%F{yellow}'
-    zstyle ':prompt:grml:left:items:history' token '!%! '
-fi
+# fix home and end keys
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
+
+# fix delete key
+bindkey    "^[[3~"          delete-char
+bindkey    "^[3;5~"         delete-char
+
+# zsh unfortunately doesn't read /etc/inputrc
+# https://bbs.archlinux.org/viewtopic.php?id=26110
+
+autoload zkbd
+#[[ ! -f ${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE ]] && zkbd
+#source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE
+
+#[[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char
+#[[ -n ${key[Insert]} ]] && bindkey "${key[Insert]}" overwrite-mode
+#[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
+#[[ -n ${key[PageUp]} ]] && bindkey "${key[PageUp]}" up-line-or-history
+#[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
+#[[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
+#[[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}" down-line-or-history
+#[[ -n ${key[Up]} ]] && bindkey "${key[Up]}" up-line-or-search
+#[[ -n ${key[Left]} ]] && bindkey "${key[Left]}" backward-char
+#[[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-search
+#[[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
+
+# --- Prompt setup ----------------------------------------------------
+
+autoload -U promptinit
+promptinit
+#prompt clint
+PS1="
+%(1j.jobs:%F{yellow}%j%f .)rc:%(0?.%F{green}%?%f.%B%F{red}%?%f%b) %(0#.%B%F{red}%n%f%b.%F{cyan}%n%f)@%m %F{blue}%~%f
+%* # "
+#RPS1="[%?]"
+
+[[ -x /usr/bin/fasd ]] && eval "$(fasd --init auto)"
 
 # --- Common aliases --------------------------------------------------
 
@@ -45,6 +71,14 @@ alias README="less README"
 alias rmkey="ssh-keygen -R"
 
 alias tmux="tmux attach || tmux"
+alias mplayer=mpv
+
+autoload -U zmv
+alias mmv='noglob zmv -W'
+
+alias sshnochk='ssh -o "StrictHostKeyChecking no"'
+
+alias fcd="\$(history 1 | sed 's/^[ ]//g' | cut -d' ' -f 3- | egrep '^cd ' | sort | uniq | fzf)"
 
 # --- Exports ---------------------------------------------------------
 
@@ -94,7 +128,9 @@ test -f ${HOME}/.aliases && source ${HOME}/.aliases
 
 test -f ${HOME}/.zsh/functions && source ${HOME}/.zsh/functions
 
-test -f ${HOME}/.fzf.zsh && source ${HOME}/.fzf.zsh
-
 test -f ${HOME}/.zsh/fzfrc && source ${HOME}/.zsh/fzfrc
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] \
+    && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

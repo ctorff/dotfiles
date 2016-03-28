@@ -40,6 +40,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'nanotech/jellybeans.vim'
 
+Plugin 'sjl/badwolf'
+
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 
@@ -74,6 +76,10 @@ let updatetime = 1
 nnoremap <silent> <F8> :TlistToggle<CR>
 
 Plugin 'vim-scripts/openscad.vim'
+
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'easymotion/vim-easymotion'
 
 " Git diff icons on the side of the file lines
 "Plugin 'airblade/vim-gitgutter'

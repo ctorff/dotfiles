@@ -175,6 +175,7 @@ syntax sync fromstart
 autocmd FileType c,cpp,php,py,sh autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 color jellybeans
+"color badwolf
 
 " --- Mappings ----------------------------------------------------------------
 
