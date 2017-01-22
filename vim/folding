@@ -2,6 +2,14 @@
 
 " https://coderwall.com/p/usd_cw
 
+"set foldenable        " enable folding
+"set foldmethod=syntax " fold based on syntax highlighting
+"set foldlevelstart=99 " start editing with all folds open
+"
+"nnoremap <Space> za
+"vnoremap <Space> za
+
+
 if has("folding")
   set foldenable        " enable folding
   set foldmethod=syntax " fold based on syntax highlighting

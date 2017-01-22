@@ -11,42 +11,20 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
-"Plugin 'tpope/vim-fugitive'
-
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'nanotech/jellybeans.vim'
-
-Plugin 'sjl/badwolf'
-
+Plugin 'gmarik/Vundle.vim'          " let Vundle manage Vundle, required
+Plugin 'tpope/vim-sensible'         " a universal set of default settings
+Plugin 'tpope/vim-surround'         " modify surroundings with cs<search><replace>
+Plugin 'tmhedberg/SimpylFold'       " No-BS Python code folding for Vim
+Plugin 'nanotech/jellybeans.vim'    " jelly beans color scheme
+Plugin 'sjl/badwolf'                " badwolf color scheme
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
-
-" Fuzzy search files and buffers
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'         " Fuzzy search files and buffers
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'jceb/vim-orgmode'           " org-mode for vim
+Plugin 'tpope/vim-speeddating'
+Plugin 'vim-scripts/openscad.vim'
 
 " Snippets manager (SnipMate), dependencies, and snippets repo
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -55,8 +33,10 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 "Plugin 'MarcWeber/UltiSnips'
 
-Plugin 'jceb/vim-orgmode'
-Plugin 'tpope/vim-speeddating'
+" fix broken yaml syntax
+Plugin 'stephpy/vim-yaml'
+
+Plugin 'vimwiki/vimwiki'
 
 "Plugin 'rking/ag.vim'
 "Plugin 'kana/vim-textobj-user'
@@ -75,9 +55,6 @@ let updatetime = 1
 "au VimEnter * Tlist
 nnoremap <silent> <F8> :TlistToggle<CR>
 
-Plugin 'vim-scripts/openscad.vim'
-
-"Plugin 'Valloric/YouCompleteMe'
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'easymotion/vim-easymotion'
 
@@ -89,8 +66,6 @@ Plugin 'vim-scripts/openscad.vim'
 
 " Search results counter
 "Plugin 'IndexedSearch'
-
-"Plugin  'puppetlabs/puppet', {'rtp': 'puppet/ext/vim'}
 
 " Python and PHP Debugger
 "Plugin 'fisadev/vim-debug.vim'

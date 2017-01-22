@@ -113,9 +113,10 @@ set cindent             " enable specific indenting for C code
 set preserveindent      " Preserve kind of whitespace when changing indent
 
 " --- 16 folding
-if filereadable(glob("~/.vim/folding")) 
-    source ~/.vim/folding
-endif
+"
+set foldenable
+set foldmethod=syntax
+set foldlevelstart=99
 
 " --- 17 diff mode
 " --- 18 mapping
@@ -205,6 +206,9 @@ map <C-j> <C-W>j<C-w>_
 map <C-k> <C-W>k<C-w>_
 map <C-h> <C-w>h<C-w>_
 map <C-l> <C-w>l<C-w>_
+
+nnoremap <Space> za
+vnoremap <Space> za
 
 " write with sudo permissions
 cmap w!! w !sudo tee > /dev/null %
