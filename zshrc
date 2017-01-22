@@ -1,6 +1,6 @@
 HISTFILE=~/.zsh_history
-HISTSIZE=5000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt appendhistory autocd beep extendedglob nomatch notify
 bindkey -v
 
@@ -10,8 +10,12 @@ autoload -Uz compinit
 compinit
 
 # History search with arrow keys
-bindkey "^[[A" history-search-backward
-bindkey "^[[B" history-search-forward
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A"   up-line-or-beginning-search
+bindkey "^[[B"   down-line-or-beginning-search
+
 
 # fix home and end keys
 bindkey "${terminfo[khome]}" beginning-of-line
@@ -48,7 +52,7 @@ promptinit
 PS1="
 %(1j.jobs:%F{yellow}%j%f .)rc:%(0?.%F{green}%?%f.%B%F{red}%?%f%b) %(0#.%B%F{red}%n%f%b.%F{cyan}%n%f)@%m %F{blue}%~%f
 %* # "
-#RPS1="[%?]"
+RPS1="[%h]"
 
 [[ -x /usr/bin/fasd ]] && eval "$(fasd --init auto)"
 
@@ -79,6 +83,11 @@ alias mmv='noglob zmv -W'
 alias sshnochk='ssh -o "StrictHostKeyChecking no"'
 
 alias fcd="\$(history 1 | sed 's/^[ ]//g' | cut -d' ' -f 3- | egrep '^cd ' | sort | uniq | fzf)"
+
+alias ydl_album='youtube-dl -x -o "%(autonumber)s - %(title)s.%(ext)s" --autonumber-size 2 --audio-format=opus'
+alias ydl_audio='youtube-dl -x -f bestaudio --prefer-free-formats -i --output "%(title)s.%(ext)s"'
+alias ydl_video='youtube-dl -f bestvideo+bestaudio --prefer-free-formats -i --output "%(title)s.%(ext)s"'
+alias ydl_video720='youtube-dl -f "bestvideo[height=720]"+bestaudio --prefer-free-formats -i --output "%(title)s.%(ext)s"'
 
 # --- Exports ---------------------------------------------------------
 
@@ -133,4 +142,5 @@ test -f ${HOME}/.zsh/fzfrc && source ${HOME}/.zsh/fzfrc
 
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] \
     && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 
